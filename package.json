@@ -1,7 +1,8 @@
 {
-  "name": "bgen",
-  "version": "0.1.0",
+  "name": "kbgen",
+  "version": "0.2.0",
   "private": true,
+  "author": "Cassiano Kruchelski Vidal",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
