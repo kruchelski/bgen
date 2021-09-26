@@ -14,6 +14,14 @@
     <div class="info-container">
       <p class="info-text">
         {{ bgStyle }}
+        <button
+          title="Copy style to clipboard"
+          @click="copyStyleToClipboard(bgStyle)"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+          </svg>
+        </button>
       </p>
     </div>
     <div class="test">
@@ -121,6 +129,10 @@ export default {
       } else {
         return `background-color: ${bgColor1}`
       }
+    },
+
+    copyStyleToClipboard (style) {
+      navigator.clipboard.writeText(style)
     }
   }
 }
@@ -162,6 +174,7 @@ export default {
   }
 
   .info-text {
+    position: relative;
     font-family: 'Fira Mono', monospace;
     word-break: break-all;
     color: rgba(255, 255, 255, 0.7);
@@ -171,7 +184,7 @@ export default {
   .test {
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: stretch;
   }
 
@@ -199,6 +212,45 @@ export default {
     background-clip: text;
     color: transparent;
     word-break: break-all;
+  }
+
+  button {
+    background: linear-gradient(to right bottom, transparent, transparent);
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    transition: all 500ms;
+    padding: 0.25rem;
+    border-radius: 50%;
+    min-height: 2rem;
+    min-width: 2rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 4px;
+    flex-wrap: nowrap;
+  }
+
+  button:hover {
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+    
+  }
+
+  button:active {
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.1));
+    color: rgba(180, 90, 200, 0.8);
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+  }
+
+  svg {
+    width: 1.2rem;
+    position: relative;
   }
 
 </style>
