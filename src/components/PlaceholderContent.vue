@@ -18,7 +18,7 @@
     <div class="text-content">
       <h2>Lorem ipsum</h2>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.  Neque id ea maiores libero.
       </p>
       <div
         class="card"

@@ -4,7 +4,7 @@
     :style="bgStyle"
   >
     <div class="container">
-      <div class="glass-container title-background">
+      <div v-tilt="tiltOptions" class="glass-container title-background">
         <h1>
           c.background.generator
         </h1>
@@ -30,9 +30,14 @@
     <Controls
       :bgColor1="bgColor1"
       :bgColor2="bgColor2"
+      :gradient="gradient"
       :showForeGround="showForeGround"
       :fgColor="fgColor"
+      :id="id"
+      :name="name"
+      :configs="configs"
       @state-update="handleStateUpdate"
+      @config-save="handleConfigSave"
     />
   </div>
 </template>
@@ -55,12 +60,34 @@ export default {
       bgColor1: '',
       bgColor2: '',
       fgColor: '#FFFFFF',
-      showForeGround: true,
-      savedName: ''
+      showForeGround: false,
+      name: '',
+      id: null,
+      configs: [],
+      tiltOptions: {
+        reverse: false,
+        max: 15,
+        perspective: 50000,
+        scale: 1,
+        speed: 3000,
+        transition: true,
+        axis: null,
+        reset: true,
+        easing: "cubic-bezier(.03,.98,.52,.99)",
+        glare: true,
+        'max-glare': 1,
+        'glare-prerender': false
+      }
     }
   },
 
   created () {
+    this.configs = [
+      {
+        id: 123,
+        name: 'teste'
+      }
+    ]
     this.init()
   },
 
@@ -103,6 +130,11 @@ export default {
       const { entity = null, value = null } = state
       if (entity === null || value === null) return
       this[entity] = value
+    },
+
+    handleConfigSave (config) {
+      console.log('Saving config')
+      console.log(config)
     }
   }
 }
@@ -117,7 +149,6 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
-    padding-bottom: 0.5rem;
   }
 
   .container {

@@ -1,31 +1,48 @@
 <template>
   <div class="controls-container">
     <div class="main-controls">
-      <div class="glass-container control">
-        AiAi
+      <div class="control">
+        <FgColorSelector
+          :fgColor="fgColor"
+          :showForeGround="showForeGround"
+          @state-update="handleStateUpdate"
+        />
       </div>
       <div class="control">
         <BgColorSelector
           :bgColor1="bgColor1"
           :bgColor2="bgColor2"
+          :gradient="gradient"
           @state-update="handleStateUpdate"
         />
       </div>
-      <div class="glass-container control">
-        Aiai
+      <div class="control">
+        <SaveConfig
+          :id="id"
+          :name="name"
+          :configs="configs"
+          @config-save="handleConfigSave"
+        />
       </div>
+    </div>
+    <div>
+      Saved configs
     </div>
   </div>
 </template>
 
 <script>
 import BgColorSelector from '@/components/BgColorSelector'
+import FgColorSelector from '@/components/FgColorSelector'
+import SaveConfig from '@/components/SaveConfig'
 
 export default {
   name: 'Controls',
 
   components: {
-    BgColorSelector
+    BgColorSelector,
+    FgColorSelector,
+    SaveConfig
   },
 
   props: {
@@ -39,6 +56,11 @@ export default {
       default: '#141414'
     },
 
+    gradient: {
+      type: Boolean,
+      default: true
+    },
+
     showForeGround: {
       type: Boolean,
       default: false
@@ -46,28 +68,38 @@ export default {
 
     fgColor: {
       type: String,
-      defualt: '#ffffff'
+      default: '#ffffff'
+    },
+
+    id: {
+      type: Number,
+      default: null,
+    },
+
+    name: {
+      type: String,
+      default: ''
+    },
+
+    configs: {
+      type: Array,
+      default: () => []
     }
   },
 
   methods: {
     handleStateUpdate (state) {
       this.$emit('state-update', state)
+    },
+
+    handleConfigSave (config) {
+      this.$emit('config-save', config)
     }
   }
 }
 </script>
 
 <style scoped>
-  .glass-container {
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 1rem;
-    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
-    border-top: 1px solid rgba(255, 255, 255, 0.5);
-    border-left: 1px solid rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(5px);
-  }
-
   .controls-container {
     min-width: 97vw;
     max-width: 97vw;
@@ -84,7 +116,7 @@ export default {
   .main-controls {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: stretch;
   }
 
   .control {
@@ -102,8 +134,16 @@ export default {
       align-items: stretch;
     }
 
-    .main-controls :nth-child(2) {
-      order: -1;
+    .control:nth-child(2) {
+      order: 0;
+    }
+
+    .control:nth-child(1) {
+      order: 1;
+    }
+
+    .control:nth-child(3) {
+      order: 1;
     }
 
     .control {
