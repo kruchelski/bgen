@@ -1,4 +1,4 @@
-import BgColorSelector from '@/components/BgColorSelector'
+import BgColorSelector from '@/components/controls/BgColorSelector'
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import VueTilt from "vue-tilt.js";
 

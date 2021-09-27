@@ -1,4 +1,4 @@
-import FgColorSelector from '@/components/FgColorSelector'
+import FgColorSelector from '@/components/controls/FgColorSelector'
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import VueTilt from "vue-tilt.js";
 

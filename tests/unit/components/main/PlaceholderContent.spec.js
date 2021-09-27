@@ -1,4 +1,4 @@
-import PlaceholderContent from "@/components/PlaceholderContent";
+import PlaceholderContent from "@/components/main/PlaceholderContent";
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import VueTilt from "vue-tilt.js";
 

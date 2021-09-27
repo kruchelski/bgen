@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import BackgroundMain from '@/components/BackgroundMain'
+import BackgroundMain from '@/components/main/BackgroundMain'
 export default {
   name: 'App',
   components: {

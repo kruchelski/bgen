@@ -43,8 +43,8 @@
 </template>
 
 <script>
-import PlaceholderContent from '@/components/PlaceholderContent'
-import Controls from '@/components/Controls'
+import PlaceholderContent from '@/components/main/PlaceholderContent'
+import Controls from '@/components/controls/Controls'
 
 export default {
   name: 'BackgroundMain',

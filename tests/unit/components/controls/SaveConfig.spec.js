@@ -1,4 +1,4 @@
-import SaveConfig from '@/components/SaveConfig'
+import SaveConfig from '@/components/controls/SaveConfig'
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import VueTilt from "vue-tilt.js";
 

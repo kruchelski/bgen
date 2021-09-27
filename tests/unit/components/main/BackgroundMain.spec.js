@@ -1,6 +1,6 @@
-import BackgroundMain from "@/components/BackgroundMain";
-import PlaceholderContent from "@/components/PlaceholderContent";
-import Controls from "@/components/Controls";
+import BackgroundMain from "@/components/main/BackgroundMain";
+import PlaceholderContent from "@/components/main/PlaceholderContent";
+import Controls from "@/components/controls/Controls";
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import VueTilt from "vue-tilt.js";
 

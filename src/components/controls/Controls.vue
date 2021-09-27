@@ -32,9 +32,9 @@
 </template>
 
 <script>
-import BgColorSelector from '@/components/BgColorSelector'
-import FgColorSelector from '@/components/FgColorSelector'
-import SaveConfig from '@/components/SaveConfig'
+import BgColorSelector from '@/components/controls/BgColorSelector'
+import FgColorSelector from '@/components/controls/FgColorSelector'
+import SaveConfig from '@/components/controls/SaveConfig'
 
 export default {
   name: 'Controls',

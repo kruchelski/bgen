@@ -10,7 +10,8 @@
     "lint": "vue-cli-service lint",
     "postinstall": "if test \"$NODE_ENV\" = \"production\" ; then npm run build ; fi ",
     "preinstall": "rm -rf ./dist",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "npx jest -u"
   },
   "dependencies": {
     "core-js": "^3.6.5",

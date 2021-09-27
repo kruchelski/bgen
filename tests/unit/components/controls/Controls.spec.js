@@ -1,7 +1,7 @@
-import Controls from "@/components/Controls";
-import BgColorSelector from '@/components/BgColorSelector'
-import FgColorSelector from '@/components/FgColorSelector'
-import SaveConfig from '@/components/SaveConfig'
+import Controls from "@/components/controls/Controls";
+import BgColorSelector from '@/components/controls/BgColorSelector'
+import FgColorSelector from '@/components/controls/FgColorSelector'
+import SaveConfig from '@/components/controls/SaveConfig'
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import VueTilt from "vue-tilt.js";
 
