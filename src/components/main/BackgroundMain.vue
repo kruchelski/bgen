@@ -117,7 +117,27 @@ export default {
     },
 
     copyStyleToClipboard (style) {
-      navigator.clipboard.writeText(style)
+      if (typeof navigator.clipboard !== 'undefined') {
+        navigator.clipboard.writeText(style)
+        // TODO: Implement some feedback to user
+        console.log('Style copied to clipboard')
+        return
+      }
+      const textArea = document.createElement('textarea')
+      textArea.value = style
+      textArea.style.position = 'fixed'
+      document.body.append(textArea)
+      textArea.focus()
+      textArea.select()
+      try {
+        const copySuccess = document.execCommand('copy')
+        // TODO: Implement some feedback to user
+        console.log(copySuccess ? 'Style copied to clipboard' : 'Style not copied to clipboard :(')
+      } catch (error) {
+        console.log(error)
+      } finally {
+        document.body.removeChild(textArea)
+      }
     },
 
     handleStateUpdate (state) {
@@ -127,6 +147,7 @@ export default {
     },
 
     handleConfigSave (config) {
+      // TODO: Implement function
       console.log('Saving config')
       console.log(config)
     }

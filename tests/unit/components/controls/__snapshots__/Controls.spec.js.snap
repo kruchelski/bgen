@@ -13,8 +13,6 @@ exports[`Tests Controls render should render it 1`] = `
       <saveconfig-stub name="" configs=""></saveconfig-stub>
     </div>
   </div>
-  <div>
-    Saved configs
-  </div>
+  <div></div>
 </div>
 `;
