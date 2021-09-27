@@ -82,12 +82,6 @@ export default {
   },
 
   created () {
-    this.configs = [
-      {
-        id: 123,
-        name: 'teste'
-      }
-    ]
     this.init()
   },
 

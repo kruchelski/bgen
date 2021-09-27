@@ -66,7 +66,7 @@ export default {
       if (this.hasError && !this.configName) {
         return true
       }
-      return null
+      return false
     },
   
     configExists () {
@@ -88,9 +88,8 @@ export default {
 
   methods: {
     saveConfig (name, id) {
-      const error = this.validateConfigName(name)
-      if (error) {
-        this.hasError = error
+      if (this.configNameHasError(name)) {
+        this.hasError = true
         return
       }
       this.hasError = false
@@ -104,7 +103,7 @@ export default {
       this.hasError = false
     },
 
-    validateConfigName (name) {
+    configNameHasError (name) {
       if (!name) return true
       return false
     }
