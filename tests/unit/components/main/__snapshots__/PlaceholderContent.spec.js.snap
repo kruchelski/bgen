@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests PlaceholderContent render should render it 1`] = `
+<div class="text-container" style="color: rgb(255, 255, 255);">
+  <div class="text-content">
+    <h2>Lorem ipsum</h2>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque id ea maiores libero. Dolore, minus perspiciatis. Commodi, sunt exercitationem, dolorum iure ad ab repellat corporis ea voluptatibus fugiat voluptas adipisci.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque id ea maiores libero. Dolore, minus perspiciatis. Commodi, sunt exercitationem, dolorum iure ad ab repellat corporis ea voluptatibus fugiat voluptas adipisci.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque id ea maiores libero. Dolore, minus perspiciatis.
+    </p>
+  </div>
+  <div class="text-content">
+    <h2>Lorem ipsum</h2>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque id ea maiores libero.
+    </p>
+    <div class="card" style="border: 1px solid #ffffff;">
+      <div class="card-header">
+        <h3>
+          Lorem ipsum
+        </h3>
+      </div>
+      <div class="card-content">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque id ea maiores libero. Dolore, minus perspiciatis. Commodi, sunt exercitationem, dolorum iure ad ab
+        </p>
+      </div>
+    </div>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque id ea maiores libero
+    </p>
+  </div>
+</div>
+`;
