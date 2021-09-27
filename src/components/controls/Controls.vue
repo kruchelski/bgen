@@ -26,7 +26,6 @@
       </div>
     </div>
     <div>
-      Saved configs
     </div>
   </div>
 </template>
