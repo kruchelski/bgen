@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests Toastr render should render it 1`] = `
+<div>
+  <div id="toastr-123" class="glass-container-toastr main-container-toastr" style="top: 4rem; transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);">
+    <div class="toastr-type-container toastr-type-container-success"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="toastr-type-icon">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      </svg>
+      <!---->
+    </div>
+    <div class="container-toastr-text container-toastr-text-success">
+      <div class="container-header">
+        <h3 class="toastr-title">Test toastr</h3> <button class="close-button-container"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="close-icon-button">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg></button>
+      </div>
+      <p class="toastr-body">Body of the test toastr</p>
+    </div>
+  </div>
+</div>
+`;
