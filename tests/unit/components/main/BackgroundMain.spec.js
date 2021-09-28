@@ -114,16 +114,35 @@ describe('Tests bgStyle compute', () => {
 describe('Tests init method', () => {
   beforeEach(() => jest.clearAllMocks())
 
-  it('should call generateColor two times', () => {
-    const generateColor = jest.fn()
+  it('should call randomNewColor one time', () => {
+    const randomNewColor = jest.fn()
     const options = {
       testMethods: {
-        generateColor
+        randomNewColor
       }
     }
     const wrapper = build(options)
     wrapper.vm.init()
+    expect(randomNewColor).toBeCalledTimes(2)
+  })
+})
+
+describe('Tests randomNewColor method', () => {
+  beforeEach(() => jest.clearAllMocks())
+
+  it('should call generateColor two times and addNewRandomConfig', () => {
+    const generateColor = jest.fn()
+    const addNewRandomConfig = jest.fn()
+    const options = {
+      testMethods: {
+        generateColor,
+        addNewRandomConfig
+      }
+    }
+    const wrapper = build(options)
+    wrapper.vm.randomNewColor()
     expect(generateColor).toBeCalledTimes(4)
+    expect(addNewRandomConfig).toBeCalledTimes(2)
   })
 })
 

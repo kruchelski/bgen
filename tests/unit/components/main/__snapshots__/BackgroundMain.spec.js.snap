@@ -3,24 +3,28 @@
 exports[`Tests BackgorundMain render should render it 1`] = `
 <div class="main-container">
   <div class="container">
-    <div class="glass-container title-background" style="transform: perspective(50000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);">
+    <div class="glass-container title-background" style="transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);">
       <h1>
         c.background.generator
       </h1>
-      <div class="js-tilt-glare" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; pointer-events: none;">
-        <div class="js-tilt-glare-inner" style="position: absolute; top: 50%; left: 50%; pointer-events: none; transform: rotate(180deg) translate(-50%, -50%); transform-origin: 0% 0%; opacity: 0; width: 0px; height: 0px;"></div>
-      </div>
     </div>
     <placeholdercontent-stub fgcolor="#FFFFFF" style="display: none;"></placeholdercontent-stub>
   </div>
   <div class="info-container">
     <p class="info-text">
+      1632854784024
+    </p>
+    <p class="info-text">
       background: linear-gradient(to right, #ffffff, #ffffff)
-      <button title="Copy style to clipboard"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <button title="Copy style to clipboard" class="copy-button"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
         </svg></button>
     </p>
   </div>
-  <controls-stub bgcolor1="#ffffff" bgcolor2="#ffffff" gradient="true" fgcolor="#FFFFFF" name="" configs=""></controls-stub>
+  <controls-stub bgcolor1="#ffffff" bgcolor2="#ffffff" gradient="true" fgcolor="#FFFFFF" name="" configs=""></controls-stub> <button title="Previous random config" class="change-color-button button-left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+    </svg></button> <button title="Generate new random config" class="change-color-button button-right"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+    </svg></button>
 </div>
 `;
