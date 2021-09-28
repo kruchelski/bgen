@@ -39,10 +39,13 @@ describe('Tests BackgorundMain render', () => {
 
   it('should render it', () => {
     const mockBgColor = '#ffffff'
+    const mockName = '123'
     const generateColor = jest.fn().mockImplementation(() => mockBgColor)
+    const generateName = jest.fn().mockImplementation(() => mockName)
     const options = {
       testMethods: {
-        generateColor
+        generateColor,
+        generateName
       }
     }
     const wrapper = build(options);
@@ -130,19 +133,22 @@ describe('Tests init method', () => {
 describe('Tests randomNewColor method', () => {
   beforeEach(() => jest.clearAllMocks())
 
-  it('should call generateColor two times and addNewRandomConfig', () => {
+  it('should call generateColor two times, addNewRandomConfig one time and generateName one time', () => {
     const generateColor = jest.fn()
     const addNewRandomConfig = jest.fn()
+    const generateName = jest.fn()
     const options = {
       testMethods: {
         generateColor,
-        addNewRandomConfig
+        addNewRandomConfig,
+        generateName
       }
     }
     const wrapper = build(options)
     wrapper.vm.randomNewColor()
     expect(generateColor).toBeCalledTimes(4)
     expect(addNewRandomConfig).toBeCalledTimes(2)
+    expect(generateName).toBeCalledTimes(2)
   })
 })
 
@@ -153,6 +159,15 @@ describe('Tests generateColor method', () => {
     const wrapper = build()
     const actual = wrapper.vm.generateColor() <= '#ffffff'
     expect(actual).toBe(true)
+  })
+})
+
+describe('Tests generateName method', () => {
+  beforeEach(() => jest.clearAllMocks())
+
+  it('should return a string', () => {
+    const wrapper = build()
+    expect(typeof wrapper.vm.generateName() === 'string').toBe(true)
   })
 })
 

@@ -119,7 +119,7 @@ export default {
     randomNewColor () {
       this.bgColor1 = this.generateColor()
       this.bgColor2 = this.generateColor()
-      this.randomName = new Date().valueOf().toString()
+      this.randomName = this.generateName()
       this.addNewRandomConfig(this.bgColor1, this.bgColor2, this.randomName)
       this.actualIndex++
     },
@@ -129,6 +129,10 @@ export default {
       const green = this.randomHexaDecimal(255.99)
       const blue = this.randomHexaDecimal(255.99)
       return `#${red}${green}${blue}`
+    },
+
+    generateName () {
+      return new Date().valueOf().toString()
     },
 
     randomHexaDecimal (max) {

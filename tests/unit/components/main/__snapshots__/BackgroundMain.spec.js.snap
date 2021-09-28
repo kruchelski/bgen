@@ -12,7 +12,7 @@ exports[`Tests BackgorundMain render should render it 1`] = `
   </div>
   <div class="info-container">
     <p class="info-text">
-      1632854784024
+      123
     </p>
     <p class="info-text">
       background: linear-gradient(to right, #ffffff, #ffffff)
