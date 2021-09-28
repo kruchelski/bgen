@@ -100,11 +100,24 @@ describe('Tests addToastr method', () => {
 describe('Tests removeToastr method', () => {
   beforeEach(() => jest.clearAllMocks())
 
-  it('should call getElementById from document', async () => {
-    const spyGetElementById = jest.spyOn(document, 'getElementById')
-    const wrapper = build()
-    await wrapper.vm.removeToastr(1)
-    expect(spyGetElementById).toBeCalledTimes(1)
+  it('should remove an item from the toastrs array', () => {
+    const mockToastrsArray = [
+      {
+        id: 321,
+        title: 'Test title',
+        bogy: 'Test body',
+        type: 'success'
+      }
+    ]
+    const options = {
+      testData: {
+        toastrs: mockToastrsArray
+      }
+    }
+    const wrapper = build(options)
+    expect(wrapper.vm.toastrs.length).toBe(1)
+    wrapper.vm.removeToastr(mockToastrsArray[0].id)
+    expect(wrapper.vm.toastrs.length).toBe(0)
   })
 })
 

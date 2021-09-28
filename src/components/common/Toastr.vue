@@ -103,15 +103,8 @@ export default {
       }, 5000)
     },
 
-    async removeToastr (id) {
-      await this.$nextTick()
-      const element = document.getElementById(`toastr-${id}`)
-      if (element) {
-        element.classList.add('main-container-hide')
-      }
-      setTimeout(() => {
-        this.toastrs = this.toastrs.filter(toastr => toastr.id !== id)
-      }, 1000)
+    removeToastr (id) {
+      this.toastrs = this.toastrs.filter(toastr => toastr.id !== id)
     },
 
     getActualPosition (index) {
@@ -148,10 +141,6 @@ export default {
     transition: all 100ms;
   }
 
-  .main-container-hide {
-    animation: hideToastr 1000ms ease 0ms;
-  }
-
   @keyframes showToastr {
     from {
       opacity: 0;
@@ -160,16 +149,6 @@ export default {
     to {
       opacity: 1rem;
       right: 2rem;
-    }
-  }
-
-  @keyframes hideToastr {
-    from {
-      opacity: 1;
-    }
-    to {
-      transform: translateY(-10rem);
-      opacity: 0;
     }
   }
 
@@ -213,7 +192,7 @@ export default {
   }
 
   .container-toastr-text-success {
-    background-color: #1e7a4a44;
+    background-color: #1e7a4a55;
   }
 
   .container-toastr-text-fail {
@@ -229,6 +208,7 @@ export default {
   .toastr-title {
     flex: 1;
     font-size: 1rem;
+    font-weight: 400;
   }
 
   .close-button-container {
