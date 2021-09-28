@@ -45,6 +45,7 @@
 <script>
 import PlaceholderContent from '@/components/main/PlaceholderContent'
 import Controls from '@/components/controls/Controls'
+import * as ToastrService from '@/services/ToastrService'
 
 export default {
   name: 'BackgroundMain',
@@ -119,8 +120,7 @@ export default {
     copyStyleToClipboard (style) {
       if (typeof navigator.clipboard !== 'undefined') {
         navigator.clipboard.writeText(style)
-        // TODO: Implement some feedback to user
-        console.log('Style copied to clipboard')
+        ToastrService.displayToastr('Style copied to the clipboard', 'Style copied', 'success')
         return
       }
       const textArea = document.createElement('textarea')
@@ -131,10 +131,14 @@ export default {
       textArea.select()
       try {
         const copySuccess = document.execCommand('copy')
-        // TODO: Implement some feedback to user
-        console.log(copySuccess ? 'Style copied to clipboard' : 'Style not copied to clipboard :(')
+        if (copySuccess) {
+          ToastrService.displayToastr('Style copied to the clipboard', 'Style copied', 'success')
+        } else {
+          ToastrService.displayToastr('Style not copied to the clipboard due to unexpected error', 'Style not copied', 'error')
+        }
       } catch (error) {
-        console.log(error)
+        const errorMsg = error.message || 'Unexpected error'
+        ToastrService.displayToastr(`Style not copied: ${errorMsg}` , 'Style not copied', 'error')
       } finally {
         document.body.removeChild(textArea)
       }
@@ -148,8 +152,7 @@ export default {
 
     handleConfigSave (config) {
       // TODO: Implement function
-      console.log('Saving config')
-      console.log(config)
+      ToastrService.displayToastr(`Config ${config.name.substring(0, 100)} saved (function not implemented)`, 'Config saved', 'success')
     }
   }
 }
