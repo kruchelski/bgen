@@ -1,6 +1,7 @@
-import BackgroundMain from "@/components/main/BackgroundMain";
-import PlaceholderContent from "@/components/main/PlaceholderContent";
-import Controls from "@/components/controls/Controls";
+import BackgroundMain from '@/components/main/BackgroundMain';
+import PlaceholderContent from '@/components/main/PlaceholderContent';
+import Controls from '@/components/controls/Controls';
+import * as ToastrService from '@/services/ToastrService'
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import VueTilt from "vue-tilt.js";
 
@@ -207,12 +208,14 @@ describe('Tests handleStateUpdate method', () => {
 describe('Tests handleConfigSave method', () => {
   beforeEach(() => jest.clearAllMocks())
 
-  it('should call console.log two times', () => {
-    const spyLog = jest.spyOn(console, 'log')
+  it('should call displayToastr from ToastrService', () => {
+    const spyDisplayToastr = jest.spyOn(ToastrService, 'displayToastr')
     const wrapper = build()
-    const mockConfig = 'testConfig'
+    const mockConfig = {
+      id: 123,
+      name: 'test'
+    }
     wrapper.vm.handleConfigSave(mockConfig)
-    expect(spyLog).toBeCalledTimes(2)
-
+    expect(spyDisplayToastr).toBeCalledTimes(1)
   })
 })

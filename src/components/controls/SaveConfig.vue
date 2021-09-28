@@ -33,6 +33,8 @@
 </template>
 
 <script>
+import * as ToastrService from '@/services/ToastrService'
+
 export default {
   name: 'SaveConfig',
 
@@ -90,6 +92,7 @@ export default {
     saveConfig (name, id) {
       if (this.configNameHasError(name)) {
         this.hasError = true
+        ToastrService.displayToastr('Error saving: Config name cannot be empty', 'Error saving', 'fail')
         return
       }
       this.hasError = false
