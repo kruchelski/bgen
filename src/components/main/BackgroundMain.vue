@@ -44,6 +44,11 @@
       @state-update="handleStateUpdate"
       @config-save="handleConfigSave"
     />
+    <SavedConfigslist
+      :configs="configs"
+      @config-select="handleConfigSelect"
+      @config-delete="handleConfigDelete"
+    />
     <button
       class="change-color-button button-left"
       title="Previous random config"
@@ -68,14 +73,17 @@
 <script>
 import PlaceholderContent from '@/components/main/PlaceholderContent'
 import Controls from '@/components/controls/Controls'
+import SavedConfigslist from '@/components/saved/SavedConfigsList'
 import * as ToastrService from '@/services/ToastrService'
+import * as StorageService from '@/services/StorageService'
 
 export default {
   name: 'BackgroundMain',
 
   components: {
     PlaceholderContent,
-    Controls
+    Controls,
+    SavedConfigslist
   },
 
   data () {
@@ -91,7 +99,8 @@ export default {
       configs: [],
       randomConfigs: [],
       actualIndex: -1,
-      controlsKey: 0
+      controlsKey: 0,
+      CONFIGS: 'configs'
     }
   },
 
@@ -114,14 +123,27 @@ export default {
   methods: {
     init () {
       this.randomNewColor()
+      this.configs = this.getSavedConfigs()
     },
 
     randomNewColor () {
       this.bgColor1 = this.generateColor()
       this.bgColor2 = this.generateColor()
       this.randomName = this.generateName()
+      this.name = ''
       this.addNewRandomConfig(this.bgColor1, this.bgColor2, this.randomName)
       this.actualIndex++
+    },
+
+    getSavedConfigs () {
+      try {
+        const configs = StorageService.getItem(this.CONFIGS)
+        if (!configs) return []
+        return configs
+      } catch (error) {
+        const errorMsg = error.message || 'Unexpected error'
+        ToastrService.displayToastr(`Error retrieving saved configs: ${errorMsg}`, 'Error saved configs', 'fail')
+      }
     },
   
     generateColor () {
@@ -181,8 +203,47 @@ export default {
     },
 
     handleConfigSave (config) {
-      // TODO: Implement function
-      ToastrService.displayToastr(`Config ${config.name.substring(0, 100)} saved (function not implemented)`, 'Config saved', 'success')
+      try {
+        config.bgColor1 = this.bgColor1
+        config.bgColor2 = this.bgColor2
+        config.gradient = this.gradient
+        config.fgColor = this.fgColor
+        config.showForeGround = this.showForeGround
+        config.id = config.id ? config.id : new Date().valueOf()
+        this.configs = this.addOrReplaceConfig(this.configs, config)
+        StorageService.saveItem(this.CONFIGS, this.configs)
+        ToastrService.displayToastr(`Config ${config.name.substring(0, 100)} saved`, 'Config saved', 'success')
+        this.handleConfigSelect(config)
+      } catch (error) {
+        const errorMsg = error.message || 'Unexpected error'
+        ToastrService.displayToastr(`Error saving config: ${errorMsg}`, 'Config not saved', 'fail')
+      }
+    },
+
+    handleConfigDelete (config) {
+      try {
+        this.configs = this.configs.filter(conf => conf.id !== config.id)
+        StorageService.saveItem(this.CONFIGS, this.configs)
+        ToastrService.displayToastr(`Config ${config.name} removed`, 'Config removed', 'success')
+        this.name = ''
+        this.randomName = new Date().valueOf().toString()
+        this.controlsKey++
+      } catch (error) {
+        const errorMsg = error.message || 'Unexpected error'
+        ToastrService.displayToastr(`Error removing config: ${errorMsg}`, 'Config not removed', 'fail')
+      }
+
+    },
+
+    addOrReplaceConfig (configs, newConfig) {
+      const newConfigs = Array.from(configs)
+      const i = configs.findIndex(conf => conf.id === newConfig.id)
+      if (i < 0) {
+        newConfigs.push(newConfig)
+      } else {
+        newConfigs.splice(i, 1, newConfig)
+      }
+      return newConfigs
     },
 
     addNewRandomConfig (bgColor1, bgColor2, randomName) {
@@ -216,6 +277,19 @@ export default {
         this.randomName = this.randomConfigs[tempIndex].randomName
         this.actualIndex = tempIndex
       }
+    },
+
+    handleConfigSelect (config) {
+      this.id = config.id
+      this.name = config.name
+      this.bgColor1 = config.bgColor1
+      this.bgColor2 = config.bgColor2
+      this.gradient = config.gradient
+      this.showForeGround = config.showForeGround
+      this.fgColor = config.fgColor
+
+      this.randomName = config.name
+      this.controlsKey++
     }
   }
 }
