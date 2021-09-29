@@ -5,7 +5,7 @@ const saveItem = (name, item) => {
 const getItem = (name) => {
   const item = localStorage.getItem(name)
   if (!item) {
-    throw new Error(`No saved item with name: ${name}`)
+    return null
   }
   return JSON.parse(item)
 }
