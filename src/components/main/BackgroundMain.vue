@@ -299,7 +299,7 @@ export default {
   .main-container {
     position: relative;
     min-height: 100vh;
-    min-width: 100vw;
+    min-width: 98vw;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -309,12 +309,12 @@ export default {
   .container {
     position: relative;
     min-height: 77vh;
-    min-width: 85vw;
-    max-width: 85vw;
+    min-width: 100%;
+    max-width: 100%;
     max-height: 77vh;
     overflow-y: auto;
     margin: 0 auto;
-    padding: 1rem 2rem 2rem;
+    padding: 1rem 5rem 2rem;
     box-sizing: border-box;
   }
   
@@ -492,6 +492,10 @@ export default {
       word-break: break-all;
       color: rgba(255, 255, 255, 0.7);
       font-size: 0.8rem;
+    }
+
+    .change-color-button {
+      width: 3rem;
     }
   }
 
