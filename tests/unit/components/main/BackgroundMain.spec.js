@@ -250,6 +250,6 @@ describe('Tests handleConfigSave method', () => {
       name: 'test'
     }
     wrapper.vm.handleConfigSave(mockConfig)
-    expect(spyDisplayToastr).toBeCalledTimes(1)
+    expect(spyDisplayToastr).toBeCalledTimes(2)
   })
 })

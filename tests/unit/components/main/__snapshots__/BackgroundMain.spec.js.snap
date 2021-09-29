@@ -21,7 +21,8 @@ exports[`Tests BackgorundMain render should render it 1`] = `
         </svg></button>
     </p>
   </div>
-  <controls-stub bgcolor1="#ffffff" bgcolor2="#ffffff" gradient="true" fgcolor="#FFFFFF" name="" configs=""></controls-stub> <button title="Previous random config" class="change-color-button button-left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <controls-stub bgcolor1="#ffffff" bgcolor2="#ffffff" gradient="true" fgcolor="#FFFFFF" name="" configs=""></controls-stub>
+  <savedconfigslist-stub configs=""></savedconfigslist-stub> <button title="Previous random config" class="change-color-button button-left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
     </svg></button> <button title="Generate new random config" class="change-color-button button-right"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
