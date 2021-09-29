@@ -204,25 +204,17 @@ export default {
 
     handleConfigSave (config) {
       try {
-        console.log('saving config')
-        console.log(config)
         config.bgColor1 = this.bgColor1
         config.bgColor2 = this.bgColor2
         config.gradient = this.gradient
         config.fgColor = this.fgColor
         config.showForeGround = this.showForeGround
         config.id = config.id ? config.id : new Date().valueOf()
-        console.log('a')
         this.configs = this.addOrReplaceConfig(this.configs, config)
-        console.log('b')
         StorageService.saveItem(this.CONFIGS, this.configs)
-        console.log('c')
         ToastrService.displayToastr(`Config ${config.name.substring(0, 100)} saved`, 'Config saved', 'success')
-        console.log('d')
         this.handleConfigSelect(config)
-        console.log('e')
       } catch (error) {
-        console.logg(error)
         const errorMsg = error.message || 'Unexpected error'
         ToastrService.displayToastr(`Error saving config: ${errorMsg}`, 'Config not saved', 'fail')
       }
