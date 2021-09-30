@@ -137,7 +137,6 @@ export default {
 
   .input-box {
     display: flex;
-    /* flex-direction: column; */
     justify-content: flex-start;
     align-items: center;
     margin: 0 0.5rem;
@@ -158,7 +157,6 @@ export default {
     border: 1px solid rgba(25, 19, 23, 0.5);
     height: 1.5rem;
     width: 100%;
-
     border-radius: 0.25rem;
     background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
     color: #381838;

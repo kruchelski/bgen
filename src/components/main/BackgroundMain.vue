@@ -308,10 +308,10 @@ export default {
 
   .container {
     position: relative;
-    min-height: 77vh;
+    min-height: 75vh;
     min-width: 100%;
     max-width: 100%;
-    max-height: 77vh;
+    max-height: 75vh;
     overflow-y: auto;
     margin: 0 auto;
     padding: 1rem 5rem 2rem;

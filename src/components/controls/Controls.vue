@@ -1,31 +1,27 @@
 <template>
   <div class="controls-container">
-    <div class="main-controls">
-      <div class="control">
-        <FgColorSelector
-          :fgColor="fgColor"
-          :showForeGround="showForeGround"
-          @state-update="handleStateUpdate"
-        />
-      </div>
-      <div class="control">
-        <BgColorSelector
-          :bgColor1="bgColor1"
-          :bgColor2="bgColor2"
-          :gradient="gradient"
-          @state-update="handleStateUpdate"
-        />
-      </div>
-      <div class="control">
-        <SaveConfig
-          :id="id"
-          :name="name"
-          :configs="configs"
-          @config-save="handleConfigSave"
-        />
-      </div>
+    <div class="control">
+      <FgColorSelector
+        :fgColor="fgColor"
+        :showForeGround="showForeGround"
+        @state-update="handleStateUpdate"
+      />
     </div>
-    <div>
+    <div class="control">
+      <BgColorSelector
+        :bgColor1="bgColor1"
+        :bgColor2="bgColor2"
+        :gradient="gradient"
+        @state-update="handleStateUpdate"
+      />
+    </div>
+    <div class="control">
+      <SaveConfig
+        :id="id"
+        :name="name"
+        :configs="configs"
+        @config-save="handleConfigSave"
+      />
     </div>
   </div>
 </template>
@@ -102,20 +98,13 @@ export default {
   .controls-container {
     min-width: 97vw;
     max-width: 97vw;
-    min-height: 13vh;
+    min-height: 16vh;
     margin: 0 auto;
     padding: 0.5rem 1rem;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
-    box-sizing: border-box;
-  }
-
-  .main-controls {
-    display: flex;
     justify-content: space-between;
     align-items: stretch;
+    box-sizing: border-box;
   }
 
   .control {
@@ -126,7 +115,7 @@ export default {
   }
 
   @media only screen and (max-width: 710px) {
-    .main-controls {
+    .controls-container {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;

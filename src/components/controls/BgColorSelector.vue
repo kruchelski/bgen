@@ -10,9 +10,16 @@
           :style="shadowColor1"
           name="bg-color-1"
           v-model="color1"
-          @input="handleChange('bgColor1')"
+          @input="handleInputColorSelector('bgColor1')"
         />
-        <label class="color-name" for="bg-color-1">{{ color1 }}</label>
+        <input
+          id="bg-color1-text"
+          type="text"
+          class="color-name-input"
+          name="bg-color1-text"
+          v-model="colorText1"
+          @input="handleInputColorText('bgColor1')"
+        />
       </div>
       <div v-if="isGradient" class="selector">
         <input
@@ -22,14 +29,24 @@
           :style="shadowColor2"
           name="bg-color-2"
           v-model="color2"
-          @input="handleChange('bgColor2')"
+          @input="handleInputColorSelector('bgColor2')"
         />
-        <label
+        <input
+          id="bg-color2-text"
+          type="text"
+          class="color-name-input"
+          name="bg-color2-text"
+          v-model="colorText2"
+          @input="handleInputColorText('bgColor2')"
+        />
+
+
+        <!-- <label
           class=color-name
           for="bg-color-2"
         >
           {{ color2 }}
-        </label>
+        </label> -->
       </div>
     </div>
       <button
@@ -48,6 +65,8 @@
 </template>
 
 <script>
+import * as colorUtils from '@/utils/colorUtils'
+
 export default {
   name: 'BgColorSelector',
 
@@ -72,6 +91,8 @@ export default {
     return {
       color1: this.bgColor1,
       color2: this.bgColor2,
+      colorText1: this.bgColor1,
+      colorText2: this.bgColor2,
       isGradient: this.gradient
     }
   },
@@ -106,6 +127,35 @@ export default {
         value: values[entity]
       }
       this.$emit('state-update', state)
+    },
+
+    handleInputColorSelector (entity) {
+      if (entity === 'bgColor1') {
+        this.colorText1 = this.color1
+      }
+      if (entity === 'bgColor2') {
+        this.colorText2 = this.color2
+      }
+      this.handleChange(entity)
+    },
+
+    handleInputColorText (entity) {
+      let color = ''
+      if (entity === 'bgColor1') {
+        this.colorText1 = colorUtils.normalizeColor(this.colorText1)
+        color = this.colorText1
+      }
+      if (entity === 'bgColor2') {
+        this.colorText2 = colorUtils.normalizeColor(this.colorText2)
+        color = this.colorText2
+      }
+      if (!colorUtils.validateInputColor(color)) return
+      if (entity === 'bgColor1') {
+        this.color1 = color
+      } else {
+        this.color2 = color
+      }
+      this.handleChange(entity)
     }
   }
 }
@@ -113,19 +163,21 @@ export default {
 
 <style scoped>
   .main-selectors-container {
-    min-width: 13rem;
+    min-width: 15rem;
+    max-width: 15rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
     padding: 0.5rem 1rem;
     font-size: 0.8rem;
-    color: #381838
+    color: #381838;
+    min-height: 100%;
   }
 
   .selectors-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: flex-start;
     margin-top: 2px;
     margin-bottom: 0;
@@ -167,6 +219,20 @@ export default {
     cursor: pointer;
     font-family: 'Fira Mono', monospace;
     margin-top: 0.125rem;
+  }
+
+  .color-name-input {
+    font-family: 'Fira Mono', monospace;
+    border: 1px solid rgba(25, 19, 23, 0.5);
+    height: 1.5rem;
+    width: 4.5rem;
+    border-radius: 0.25rem;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+    color: #381838;
+    font-size: 0.8rem;
+    padding: 0 0.5rem;
+    box-sizing: border-box;
+    margin-top: 0.25rem;
   }
 
   .gradient-button {
