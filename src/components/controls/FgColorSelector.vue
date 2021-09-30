@@ -13,9 +13,16 @@
           :style="shadowColor"
           name="color"
           v-model="color"
-          @input="handleChange('fgColor')"
+          @input="handleInputColorSelector('fgColor')"
         />
-        <label class="color-name" for="color">{{ color }}</label>
+        <input
+          id="color-text"
+          type="text"
+          class="color-name-input"
+          name="color-text"
+          v-model="colorText"
+          @input="handleInputColorText('fgColor')"
+        />
       </div>
     </div>
       <button
@@ -34,6 +41,8 @@
 </template>
 
 <script>
+import * as colorUtils from '@/utils/colorUtils'
+
 export default {
   name: 'FgColorSelector',
 
@@ -52,6 +61,7 @@ export default {
   data () {
     return {
       color: this.fgColor,
+      colorText: this.fgColor,
       foreground: this.showForeGround
     }
   },
@@ -78,6 +88,19 @@ export default {
         value: this.color
       }
       this.$emit('state-update', state)
+    },
+
+    handleInputColorSelector (entity) {
+      this.colorText = this.color
+      this.handleChange(entity)
+    },
+
+    handleInputColorText (entity) {
+      this.colorText = colorUtils.normalizeColor(this.colorText)
+      const colorTemp = this.colorText
+      if (!colorUtils.validateInputColor(colorTemp)) return
+      this.color = colorTemp
+      this.handleChange(entity)
     }
   }
 }
@@ -136,10 +159,18 @@ export default {
     align-self: center;
   }
 
-  .color-name {
-    cursor: pointer;
+  .color-name-input {
     font-family: 'Fira Mono', monospace;
-    margin-top: 0.125rem;
+    border: 1px solid rgba(25, 19, 23, 0.5);
+    height: 1.5rem;
+    width: 4.5rem;
+    border-radius: 0.25rem;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+    color: #381838;
+    font-size: 0.8rem;
+    padding: 0 0.5rem;
+    box-sizing: border-box;
+    margin-top: 0.25rem;
   }
   
   .toggle-foreground-button {
