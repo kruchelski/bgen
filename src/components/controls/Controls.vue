@@ -112,6 +112,8 @@ export default {
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    min-height: 16vh;
+    box-sizing: border-box;
   }
 
   @media only screen and (max-width: 710px) {
