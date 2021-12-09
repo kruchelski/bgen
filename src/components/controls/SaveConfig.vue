@@ -1,43 +1,47 @@
 <template>
-  <div class="glass-container-controls main-input-container">
-    <span class="save-config-title">Save config</span>
-    <div class="input-container">
-      <div
-        class="input-box"
-      >        
-        <svg v-if="errorState" class="icon-error" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-        </svg>
-        <input
-          id="configName"
-          type="text"
-          class="input-text"
-          :class="errorState ? 'input-text-error' : ''"
-          name="configName"
-          placeholder="Config name"
-          v-model="configName"
-          @keyup.enter="saveConfig(configName, configId)"
-        />
+  <GlassContainer>
+    <div class="main-input-container">
+      <span class="save-config-title">Save config</span>
+      <div class="input-container">
+        <div
+          class="input-box"
+        >        
+          <svg v-if="errorState" class="icon-error" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+          <input
+            id="configName"
+            type="text"
+            class="input-text"
+            :class="errorState ? 'input-text-error' : ''"
+            name="configName"
+            placeholder="Config name"
+            v-model="configName"
+            @keyup.enter="saveConfig(configName, configId)"
+          />
+        </div>
       </div>
+      <Button @button-click="saveConfig(configName, configId)">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+        </svg>
+        <span>{{ configExists ? 'Update config' : 'Save config' }}</span>
+      </Button>
     </div>
-    <Button @button-click="saveConfig(configName, configId)">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
-      </svg>
-      <span>{{ configExists ? 'Update config' : 'Save config' }}</span>
-    </Button>
-  </div>
+  </GlassContainer>
 </template>
 
 <script>
 import Button from '@/components/common/Button'
+import GlassContainer from '@/components/common/GlassContainer'
 import * as ToastrService from '@/services/ToastrService'
 
 export default {
   name: 'SaveConfig',
 
   components: {
-    Button
+    Button,
+    GlassContainer
   },
 
   props: {
@@ -118,15 +122,16 @@ export default {
 
 <style scoped>
   .main-input-container {
+    box-sizing: border-box;
     min-width: 13rem;
-    min-height: 100%;
+    min-height: 16vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
     padding: 0.5rem 0.5rem;
     font-size: 0.8rem;
-    color: #381838
+    color: #381838;
   }
 
   .input-container {
@@ -144,15 +149,6 @@ export default {
     margin: 0 0.5rem;
     width: 10.5rem;
     box-sizing: border-box;
-  }
-
-  .glass-container-controls {
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
-    border-top: 1px solid rgba(255, 255, 255, 0.5);
-    border-left: 1px solid rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(5px);
   }
 
   .input-text {
@@ -191,7 +187,7 @@ export default {
 
   @media only screen and (max-width: 710px) {
     .main-input-container {
-      min-width: 100%;
+      min-width: 97vw;
     }
 
     .input-container {

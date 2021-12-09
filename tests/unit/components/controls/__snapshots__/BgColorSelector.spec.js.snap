@@ -1,15 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tests BgColorSelector render should render it 1`] = `
-<div class="glass-container-controls main-selectors-container"><span class="color-selector-title">Background colors </span>
-  <div class="selectors-container">
-    <div class="selector"><input id="bg-color-1" type="color" name="bg-color-1" class="input-color-selector" style="box-shadow: 0 0 20px #ffffff;"> <input id="bg-color1-text" type="text" name="bg-color1-text" class="color-name-input"></div>
-    <div class="selector"><input id="bg-color-2" type="color" name="bg-color-2" class="input-color-selector" style="box-shadow: 0 0 20px #141414;"> <input id="bg-color2-text" type="text" name="bg-color2-text" class="color-name-input"></div>
+<glasscontainer-stub>
+  <div class="main-selectors-container"><span class="color-selector-title">Background colors </span>
+    <div class="selectors-container">
+      <div class="selector"><input id="bg-color-1" type="color" name="bg-color-1" class="input-color-selector" style="box-shadow: 0 0 20px #ffffff;"> <input id="bg-color1-text" type="text" name="bg-color1-text" class="color-name-input"></div>
+      <div class="selector"><input id="bg-color-2" type="color" name="bg-color-2" class="input-color-selector" style="box-shadow: 0 0 20px #141414;"> <input id="bg-color2-text" type="text" name="bg-color2-text" class="color-name-input"></div>
+    </div>
+    <button-stub>
+      <!----> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      </svg> <span>Disable gradient</span>
+    </button-stub>
   </div>
-  <button-stub>
-    <!----> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-    </svg> <span>Disable gradient</span>
-  </button-stub>
-</div>
+</glasscontainer-stub>
 `;
