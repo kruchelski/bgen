@@ -4,10 +4,11 @@ exports[`Tests FgColorSelector render should render it 1`] = `
 <div class="glass-container-controls main-selectors-container"><span class="color-selector-title">Foreground color</span>
   <div class="selectors-container">
     <div class="selector" style="display: none;"><input id="color" type="color" name="color" class="input-color-selector" style="box-shadow: 0 0 20px #ffffff;"> <input id="color-text" type="text" name="color-text" class="color-name-input"></div>
-  </div> <button class="toggle-foreground-button"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  </div>
+  <button-stub><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
     </svg>
     <!----> <span>Show foreground</span>
-  </button>
+  </button-stub>
 </div>
 `;
