@@ -1,46 +1,54 @@
 <template>
-  <div
-    v-tilt
-    class="saved-item-glass-container saved-item-main-container"
-    @mouseenter="showDeleteButton = true"
-    @mouseleave="showDeleteButton = false"
-    @click="selectConfig(config)"
-  >
-    <button
-      v-if="showDeleteButton || isWindowSmall"
-      class="delete-config-button"
-      @click.stop="deleteConfig(config.id, config.name)"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" class="delete-config-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-      </svg>
-    </button>
+  <GlassContainer v-tilt>
     <div
-      class="saved-config"
-      :style="bgStyle"
+      class="saved-item-main-container"
+      @mouseenter="showDeleteButton = true"
+      @mouseleave="showDeleteButton = false"
+      @click="selectConfig(config)"
     >
-      <div
-        v-if="config.showForeGround" 
-        class="saved-config-foreground"
-        :style="fgStyle"
+      <button
+        v-if="showDeleteButton || isWindowSmall"
+        class="delete-config-button"
+        @click.stop="deleteConfig(config.id, config.name)"
       >
-        <p class="saved-config-text">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio sapiente nostrum vitae atque vero optio, eligendi nisi, tenetur amet accusamus, expedita est nihil ipsa error excepturi aspernatur delectus praesentium veritatis.
-        </p>
-        <p class="saved-config-text">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio sapiente nostrum vitae atque vero optio, eligendi nisi, tenetur amet accusamus, expedita est nihil ipsa error excepturi aspernatur delectus praesentium veritatis.
-        </p>
+        <svg xmlns="http://www.w3.org/2000/svg" class="delete-config-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+        </svg>
+      </button>
+      <div
+        class="saved-config"
+        :style="bgStyle"
+      >
+        <div
+          v-if="config.showForeGround" 
+          class="saved-config-foreground"
+          :style="fgStyle"
+        >
+          <p class="saved-config-text">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio sapiente nostrum vitae atque vero optio, eligendi nisi, tenetur amet accusamus, expedita est nihil ipsa error excepturi aspernatur delectus praesentium veritatis.
+          </p>
+          <p class="saved-config-text">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio sapiente nostrum vitae atque vero optio, eligendi nisi, tenetur amet accusamus, expedita est nihil ipsa error excepturi aspernatur delectus praesentium veritatis.
+          </p>
+        </div>
       </div>
+      <p class="saved-config-title">
+        {{ config.name }}
+      </p>
     </div>
-    <p class="saved-config-title">
-      {{ config.name }}
-    </p>
-  </div>
+  </GlassContainer>
+
 </template>
 
 <script>
+import GlassContainer from '@/components/common/GlassContainer'
+
 export default {
   name: 'SavedConfigItem',
+
+  components: {
+    GlassContainer
+  },
 
   props: {
     config: {
@@ -122,15 +130,6 @@ export default {
     margin: 0.5rem 0;
   }
 
-  .saved-item-glass-container {
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 0.5rem;
-    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
-    border-top: 1px solid rgba(255, 255, 255, 0.5);
-    border-left: 1px solid rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(5px);
-  }
-
   .saved-config {
     box-sizing: border-box;
     width: 12rem;
@@ -165,8 +164,8 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    top: -0.5rem;
-    right: -0.5rem;
+    top: 0;
+    right: 0;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
     padding: 0.25rem;

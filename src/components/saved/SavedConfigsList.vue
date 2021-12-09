@@ -7,32 +7,40 @@
       v-if="configs[0]"
       class="saved-items-container"
     >
-      <SavedConfigItem
+      <div
         v-for="(config, index) of configs"
         :key="index"
-        :config="config"
-        @config-select="handleConfigSelect"
-        @config-delete="handleConfigDelete"
-      />
+      >
+        <SavedConfigItem
+          :config="config"
+          @config-select="handleConfigSelect"
+          @config-delete="handleConfigDelete"
+        />
+      </div>
     </div>
-    <div
-      v-if="!configs[0]"
-      class="empty-saved-container saved-glass-container "
-    >
-      <p class="empty-saved-text">
-        No saved configs to show
-      </p>
-    </div>
+    
+    <GlassContainer v-if="!configs[0]">
+      <div
+        class="empty-saved-container"
+      >
+        <p class="empty-saved-text">
+          No saved configs to show
+        </p>
+      </div>
+    </GlassContainer>
+
   </div>
 </template>
 
 <script>
+import GlassContainer from '@/components/common/GlassContainer'
 import SavedConfigItem from '@/components/saved/SavedConfigItem'
 export default {
   name: 'SavedConfigslist',
 
   components: {
-    SavedConfigItem
+    SavedConfigItem,
+    GlassContainer
   },
 
   props: {
@@ -56,7 +64,7 @@ export default {
 
 <style>
   .saved-main-container {
-    width: 90vw;
+    width: 97vw;
     margin: 1rem auto;
     display: flex;
     flex-direction: column;
@@ -65,15 +73,6 @@ export default {
     color: #481848;
   }
   
-  .saved-glass-container {
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 0.5rem;
-    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
-    border-top: 1px solid rgba(255, 255, 255, 0.5);
-    border-left: 1px solid rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(5px);
-  }
-
   .saved-items-container {
     width: 100%;
     display: flex;
@@ -81,10 +80,12 @@ export default {
     align-items: stretch;
     flex-wrap: wrap;
     padding: 1rem;
+    gap: 10px;
   }
 
   .saved-title {
     margin-top: 1rem;
+    margin-bottom: 0.5rem;
     font-size: 1.3rem;
     font-weight: 400;
   }
