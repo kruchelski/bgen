@@ -20,23 +20,25 @@
         />
       </div>
     </div>
-      <button
-        class="save-button"
-        @click="saveConfig(configName, configId)"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
-        </svg>
-        <span>{{ configExists ? 'Update config' : 'Save config' }}</span>
-      </button>
+    <Button @button-click="saveConfig(configName, configId)">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+      </svg>
+      <span>{{ configExists ? 'Update config' : 'Save config' }}</span>
+    </Button>
   </div>
 </template>
 
 <script>
+import Button from '@/components/common/Button'
 import * as ToastrService from '@/services/ToastrService'
 
 export default {
   name: 'SaveConfig',
+
+  components: {
+    Button
+  },
 
   props: {
     id: {
@@ -185,43 +187,6 @@ export default {
     width: 1.3rem;
     color: #8b0000;
     margin-right: 0.25rem;
-  }
-  
-  .save-button {
-    position: relative;
-    align-self: center;
-    margin-top: 00.125rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(25, 19, 23, 0.5);
-    color: rgba(255, 255, 255, 0.5);
-    padding: 0.25rem 1rem;
-    border-radius: 0.25rem;
-    border: transparent;
-    font-size: 0.8rem;
-    font-weight: 300;
-    cursor: pointer;
-    transition: all 100ms;
-  }
-
-  .save-button:hover {
-    background-color: rgba(75, 29, 75, 0.5);
-    box-shadow: 0 0 20px rgba(75, 29, 75, 0.1);
-  }
-
-  .save-button:active {
-    background-color: rgba(10, 0, 10, 0.5);
-    transform: translateY(1px);
-    transform: scale(0.98);
-  }
-
-  .save-button span {
-    margin-left: 0.25rem;
-  }
-
-  .save-button svg {
-    width: 0.8rem;
   }
 
   @media only screen and (max-width: 710px) {

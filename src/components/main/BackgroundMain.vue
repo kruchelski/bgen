@@ -131,6 +131,7 @@ export default {
       this.bgColor2 = this.generateColor()
       this.randomName = this.generateName()
       this.name = ''
+      this.id = null
       this.addNewRandomConfig(this.bgColor1, this.bgColor2, this.randomName)
       this.actualIndex++
     },
@@ -225,8 +226,13 @@ export default {
         this.configs = this.configs.filter(conf => conf.id !== config.id)
         StorageService.saveItem(this.CONFIGS, this.configs)
         ToastrService.displayToastr(`Config ${config.name} removed`, 'Config removed', 'success')
-        this.name = ''
+        if (this.name === config.name) {
+          this.name = ''
+        }
         this.randomName = new Date().valueOf().toString()
+        if (this.id === config.id) {
+          this.id = null
+        }
         this.controlsKey++
       } catch (error) {
         const errorMsg = error.message || 'Unexpected error'
